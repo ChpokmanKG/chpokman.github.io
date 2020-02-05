@@ -14,9 +14,10 @@
 </head>
 <body>
 
-    <iframe src="https://localhost:3000/#/" id="destination-frame" style="width: 100%; height: 100vh;" frameborder="0"></iframe>
+    <iframe onload="sendData()" src="https://localhost:3000/#/" id="destination-frame" style="width: 100%; height: 100vh;" frameborder="0"></iframe>
     <script>
-        ga('create', 'UA-157546171-1', 'auto');
+        const sendData = () => {
+            ga('create', 'UA-157546171-1', 'auto');
         ga(function(tracker) {
           // Gets the client ID of the default tracker.
           var clientId = tracker.get('clientId');
@@ -30,6 +31,7 @@
                hostname: window.location.hostname,
            },"https://localhost:3000/#/");
         });
+        }
     </script>
 </body>
 </html>
