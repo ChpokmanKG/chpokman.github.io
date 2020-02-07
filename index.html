@@ -14,11 +14,11 @@
 </head>
 <body>
 
-    <iframe onload="sendData()" src="https://localhost:3000/#/" id="destination-frame" style="width: 100%; height: 100vh;" frameborder="0"></iframe>
+    <iframe onload="sendData()" src="http://localhost:3000/#/" id="destination-frame" style="width: 100%; height: 100vh;" frameborder="0"></iframe>
     <script>
         const sendData = () => {
             ga('create', 'UA-157546171-1', 'auto');
-        ga(function(tracker) {
+            ga(function(tracker) {
           // Gets the client ID of the default tracker.
           var clientId = tracker.get('clientId');
         
@@ -27,10 +27,11 @@
         
           // Sends the client ID to the window inside the destination frame.
            frameWindow.postMessage({
-               clientId,
-               hostname: window.location.hostname,
-           },"https://localhost:3000/#/");
-        });
+                 clientId,
+                    hostname: window.location.href,
+                },"http://localhost:3000/#/");
+            });
+            console.log(document.getElementById('destination-frame').contentWindow);
         }
     </script>
 </body>
